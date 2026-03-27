@@ -1,0 +1,40 @@
+{
+  "appId": "com.replibot.desktop",
+  "productName": "Replibot",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "package.json"
+  ],
+  "extraMetadata": {
+    "main": "dist-electron/electron/main.js"
+  },
+  "extraResources": [
+    {
+      "from": "config/installer.generated.json",
+      "to": "config/installer.generated.json"
+    },
+    {
+      "from": "config/installer.defaults.json",
+      "to": "config/installer.defaults.json"
+    }
+  ],
+  "win": {
+    "signAndEditExecutable": false,
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "provider": "openai-compatible",
+  "authMode": "api_key",
+  "providerLabel": "OpenAI-compatible provider",
+  "apiFormat": "chat_completions",
+  "apiKey": "",
+  "baseUrl": "",
+  "model": ""
+}

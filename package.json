@@ -1,0 +1,42 @@
+{
+  "name": "replibot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first Electron app builder for private apps and widgets.",
+  "main": "dist-electron/electron/main.js",
+  "author": "Replibot",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
+    "dev:renderer": "vite",
+    "dev:desktop": "electron .",
+    "prepare:installer-config": "node scripts/write-installer-config.mjs",
+    "build": "npm run build:renderer && npm run build:electron",
+    "build:renderer": "vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dist:win": "npm run prepare:installer-config && npm run build && set CSC_IDENTITY_AUTO_DISCOVERY=false&& electron-builder --config electron-builder.json --win nsis",
+    "dist:dir": "npm run prepare:installer-config && npm run build && set CSC_IDENTITY_AUTO_DISCOVERY=false&& electron-builder --config electron-builder.json --dir"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/ui": "^4.1.0",
+    "concurrently": "^9.1.2",
+    "electron": "^35.0.0",
+    "electron-builder": "^24.13.3",
+    "jsdom": "^29.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.2",
+    "vitest": "^4.1.0",
+    "wait-on": "^8.0.3"
+  }
+}
