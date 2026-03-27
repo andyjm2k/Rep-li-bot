@@ -1,0 +1,76 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Creating Projects">
+  <h2>Creating Projects</h2>
+  <p>
+    Rep-li-bot uses a structured builder flow to help you create apps
+    without writing any code.
+  </p>
+
+  <h3>The Builder Flow</h3>
+
+  <h4>1. Launcher Screen</h4>
+  <p>
+    The launcher shows your existing projects. From here you can:
+  </p>
+  <ul>
+    <li>Open an existing project</li>
+    <li>Create a new project</li>
+    <li>Delete or duplicate projects</li>
+  </ul>
+
+  <h4>2. Builder Brief</h4>
+  <p>
+    When creating a new project, enter a clear description of what you want.
+    The more specific you are, the better the results.
+  </p>
+  <pre><code>Example: "A habit tracker that helps me build daily routines.
+I want to:
+- Set habits with name and frequency (daily/weekly)
+- Check off habits as I complete them
+- See a streak counter for consecutive days
+- View weekly progress on a simple chart"</code></pre>
+
+  <h4>3. Generation Process</h4>
+  <p>
+    When you click "Generate", Rep-li-bot:
+  </p>
+  <ol>
+    <li>Sends your description to the AI provider</li>
+    <li>Validates the generated code for safety and correctness</li>
+    <li>Performs one repair pass if issues are detected</li>
+    <li>Records generation metadata (attempts, warnings, notes)</li>
+  </ol>
+
+  <h4>4. Preview Mode</h4>
+  <p>
+    Preview your app in a sandboxed iframe. This allows you to test
+    functionality before running as a standalone app.
+  </p>
+
+  <h4>5. Run Mode</h4>
+  <p>
+    When satisfied with the preview, click "Run" to launch your app
+    in its own window.
+  </p>
+
+  <h3>Managing Projects</h3>
+  <p>
+    Projects are stored locally in your workspace. Each project contains:
+  </p>
+  <ul>
+    <li><code>project.json</code> - Project metadata and configuration</li>
+    <li><code>src/</code> - Generated source code</li>
+    <li><code>assets/</code> - Project resources</li>
+  </ul>
+
+  <h3>Best Practices</h3>
+  <ul>
+    <li>Start simple and iterate</li>
+    <li>Be specific about user interactions</li>
+    <li>Mention data types and structures explicitly</li>
+    <li>Test in preview mode before running</li>
+  </ul>
+</DocsLayout>

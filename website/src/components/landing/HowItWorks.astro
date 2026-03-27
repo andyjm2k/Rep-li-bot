@@ -1,0 +1,117 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Describe Your App',
+    description: 'Tell Rep-li-bot what you want in plain English. A productivity tracker, a recipe manager, a widget for your smart home.',
+  },
+  {
+    number: '2',
+    title: 'AI Generates the Code',
+    description: 'Rep-li-bot uses AI to understand your requirements and generates working code tailored to your needs.',
+  },
+  {
+    number: '3',
+    title: 'Run Locally',
+    description: 'Preview and run your app instantly. Everything stays on your machine, private and secure.',
+  },
+];
+---
+
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>From idea to running app in three simple steps.</p>
+    </div>
+    <div class="steps">
+      {steps.map((step, index) => (
+        <div class="step">
+          <div class="step-number">{step.number}</div>
+          <h3>{step.title}</h3>
+          <p>{step.description}</p>
+          {index < steps.length - 1 && <div class="step-arrow">&#8594;</div>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-it-works {
+    padding: var(--space-24) 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+  }
+
+  .steps {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-8);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 var(--space-4);
+  }
+
+  .step-number {
+    width: 56px;
+    height: 56px;
+    background: var(--accent);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+  }
+
+  .step h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .step p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .step-arrow {
+    position: absolute;
+    top: 28px;
+    right: -40px;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .steps {
+      flex-direction: column;
+      gap: var(--space-12);
+    }
+
+    .step-arrow {
+      display: none;
+    }
+  }
+</style>

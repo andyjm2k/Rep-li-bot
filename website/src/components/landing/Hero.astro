@@ -1,0 +1,116 @@
+---
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">v0.1.0 Now Available</div>
+    <h1>Build Private Apps<br/>with AI, <span class="highlight">No Code Required</span></h1>
+    <p class="hero-subtitle">
+      Rep-li-bot is a local-first desktop application that lets you create custom apps and widgets
+      using plain English descriptions. Everything stays on your machine.
+    </p>
+    <div class="hero-actions">
+      <a href="/download" class="btn btn-primary btn-lg">Download for Windows</a>
+      <a href="/docs/getting-started" class="btn btn-secondary btn-lg">Read the Docs</a>
+    </div>
+    <div class="hero-meta">
+      <span>Windows 10+ required</span>
+      <span class="separator">|</span>
+      <span>~86 MB installer</span>
+    </div>
+  </div>
+  <div class="hero-glow"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: var(--space-24) 0 var(--space-16);
+    overflow: hidden;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--space-6);
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .highlight {
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto var(--space-8);
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: 1.125rem;
+  }
+
+  .hero-meta {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .separator {
+    margin: 0 var(--space-2);
+    opacity: 0.5;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-lg {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>

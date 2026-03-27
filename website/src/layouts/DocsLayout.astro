@@ -1,0 +1,275 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const navigation = [
+  {
+    title: 'Getting Started',
+    items: [
+      { title: 'Introduction', href: '/docs' },
+      { title: 'Installation', href: '/docs/installation' },
+      { title: 'Quick Start', href: '/docs/getting-started' },
+    ],
+  },
+  {
+    title: 'Using Rep-li-bot',
+    items: [
+      { title: 'Creating Projects', href: '/docs/usage' },
+      { title: 'Themes', href: '/docs/themes' },
+      { title: 'AI Configuration', href: '/docs/ai-configuration' },
+    ],
+  },
+  {
+    title: 'Reference',
+    items: [
+      { title: 'Architecture', href: '/docs/architecture' },
+      { title: 'Security', href: '/docs/security' },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={`${title} | Rep-li-bot Documentation`} />
+    <title>{title} | Rep-li-bot Docs</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="docs-header">
+      <nav class="container">
+        <a href="/" class="logo">Rep-li-bot</a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/download">Download</a>
+          <a href="https://github.com/andyjm2k/Rep-li-bot" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="docs-layout">
+      <aside class="docs-sidebar">
+        {navigation.map((section) => (
+          <div class="sidebar-section">
+            <h4>{section.title}</h4>
+            <ul>
+              {section.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class={currentPath === item.href || currentPath === item.href + '/' ? 'active' : ''}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </aside>
+
+      <main class="docs-content">
+        <div class="content-header">
+          <h1>{title}</h1>
+        </div>
+        <article>
+          <slot />
+        </article>
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  .docs-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: var(--space-4) 0;
+  }
+
+  .docs-header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .nav-links a {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  .docs-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 65px);
+  }
+
+  .docs-sidebar {
+    position: sticky;
+    top: 65px;
+    height: calc(100vh - 65px);
+    overflow-y: auto;
+    padding: var(--space-8);
+    border-right: 1px solid var(--border);
+    background: var(--bg-secondary);
+  }
+
+  .sidebar-section {
+    margin-bottom: var(--space-6);
+  }
+
+  .sidebar-section h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .sidebar-section ul {
+    list-style: none;
+  }
+
+  .sidebar-section li {
+    margin-bottom: var(--space-1);
+  }
+
+  .sidebar-section a {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    color: var(--text);
+    font-size: 0.9375rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .sidebar-section a:hover {
+    background: var(--bg);
+    color: var(--accent-strong);
+  }
+
+  .sidebar-section a.active {
+    background: var(--accent);
+    color: white;
+  }
+
+  .docs-content {
+    padding: var(--space-8) var(--space-12);
+    max-width: 800px;
+  }
+
+  .content-header {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .content-header h1 {
+    font-size: 2rem;
+  }
+
+  article :global(h2) {
+    font-size: 1.5rem;
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-4);
+  }
+
+  article :global(h3) {
+    font-size: 1.25rem;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+
+  article :global(p) {
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+  }
+
+  article :global(ul), article :global(ol) {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+    color: var(--text-muted);
+  }
+
+  article :global(li) {
+    margin-bottom: var(--space-2);
+    line-height: 1.6;
+  }
+
+  article :global(code) {
+    background: var(--bg-secondary);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: 0.875em;
+    color: var(--accent-strong);
+  }
+
+  article :global(pre) {
+    background: var(--text);
+    color: var(--bg);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: var(--space-4);
+  }
+
+  article :global(pre code) {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  article :global(a) {
+    color: var(--accent-strong);
+    text-decoration: underline;
+  }
+
+  article :global(a:hover) {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .docs-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .docs-sidebar {
+      display: none;
+    }
+
+    .docs-content {
+      padding: var(--space-6);
+    }
+  }
+</style>

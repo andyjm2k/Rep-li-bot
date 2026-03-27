@@ -1,0 +1,68 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Security">
+  <h2>Security</h2>
+  <p>
+    Rep-li-bot is designed with security as a core principle, ensuring that
+    generated apps and user data remain protected.
+  </p>
+
+  <h3>Key Security Principles</h3>
+
+  <h4>Local-First Data</h4>
+  <p>
+    All project data is stored locally on your machine. Nothing is transmitted
+    to external servers except your AI provider requests.
+  </p>
+
+  <h4>API Key Protection</h4>
+  <p>
+    API keys are stored locally in your workspace configuration and are only
+    transmitted directly to your configured AI provider. Keys are never exposed
+    to generated apps or the preview harness.
+  </p>
+
+  <h4>Sandboxed Preview</h4>
+  <p>
+    Generated apps run in a sandboxed iframe with:
+  </p>
+  <ul>
+    <li>No access to Electron APIs</li>
+    <li>No access to Node.js</li>
+    <li>No access to browser cookies or storage</li>
+    <li>Restricted network access</li>
+    <li>Controlled UI primitives only</li>
+  </ul>
+
+  <h4>Code Validation</h4>
+  <p>
+    Generated code is validated before acceptance. The validator blocks:
+  </p>
+  <ul>
+    <li>Direct <code>fetch</code> calls</li>
+    <li><code>require</code> or dynamic imports</li>
+    <li>Electron or Node API usage</li>
+    <li>Access to sensitive browser APIs</li>
+  </ul>
+
+  <h3>AI Provider Security</h3>
+  <p>
+    AI code generation is handled entirely through the Electron main process.
+    The AI provider credentials are:
+  </p>
+  <ul>
+    <li>Never exposed to renderer code</li>
+    <li>Never exposed to preview harness</li>
+    <li>Never stored in project files</li>
+    <li>Stored only in local config</li>
+  </ul>
+
+  <h3>Best Practices</h3>
+  <ul>
+    <li>Keep your AI API key secure and don't share it</li>
+    <li>Review generated code before running if concerned</li>
+    <li>Report any security issues on GitHub</li>
+  </ul>
+</DocsLayout>

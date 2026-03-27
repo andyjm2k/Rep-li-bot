@@ -1,0 +1,81 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Architecture">
+  <h2>Architecture</h2>
+  <p>
+    Rep-li-bot is a desktop-first builder for local private apps and widgets
+    aimed at non-coders.
+  </p>
+
+  <h3>Core Principle</h3>
+  <p>
+    Generated apps do not get direct access to Electron, Node.js, browser cookies,
+    or arbitrary network access.
+  </p>
+
+  <h3>Project Layers</h3>
+
+  <h4>electron/</h4>
+  <p>
+    Hosts the trusted shell, windows, IPC handlers, and file system integrations.
+  </p>
+
+  <h4>src/</h4>
+  <p>
+    React renderer for workspace, builder, library, and widget management.
+  </p>
+
+  <h4>shared/</h4>
+  <p>
+    Type contracts shared between trusted Electron code and the renderer.
+  </p>
+
+  <h3>Security Boundary</h3>
+  <p>
+    The renderer only talks to Electron through the preload bridge exposed as
+    <code>window.replibot</code>. The bridge exposes narrow capability APIs
+    instead of raw <code>ipcRenderer</code> access.
+  </p>
+
+  <p>Generated apps run in a dedicated harness with:</p>
+  <ul>
+    <li>Manifest-declared permissions</li>
+    <li>Project-scoped storage</li>
+    <li>Controlled UI primitives</li>
+    <li>Explicit AI provider access</li>
+    <li>No bearer token injection</li>
+    <li>No unrestricted <code>fetch</code></li>
+    <li>No direct filesystem access</li>
+  </ul>
+
+  <h3>Preview Harness</h3>
+  <p>
+    The preview harness runs project source inside a sandboxed iframe with:
+  </p>
+  <ul>
+    <li>No direct Electron access</li>
+    <li>No direct preload bridge access</li>
+    <li>No unrestricted network access</li>
+    <li>Project-scoped <code>storage.get</code> and <code>storage.set</code></li>
+    <li>Simple <code>ui.render</code>, <code>ui.setTitle</code>, and <code>ui.notify</code></li>
+  </ul>
+
+  <h3>Local Workspace Layout</h3>
+  <p>The Electron shell stores workspace data under the app data directory:</p>
+  <pre><code>workspace/projects/&lt;project-id&gt;/manifest.json
+workspace/projects/&lt;project-id&gt;/spec.json
+workspace/projects/&lt;project-id&gt;/src/main.ts</code></pre>
+
+  <h3>AI Layer</h3>
+  <p>
+    The AI assistance layer runs through the Electron main process so provider
+    credentials stay out of the renderer and preview harness.
+  </p>
+  <p>
+    Generated source is validated before acceptance. The validation blocks
+    unsupported capabilities like direct <code>fetch</code>, <code>require</code>,
+    Electron APIs, and Node process access.
+  </p>
+</DocsLayout>

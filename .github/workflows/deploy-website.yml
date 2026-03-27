@@ -1,0 +1,56 @@
+name: Deploy Website to S3
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'website/**'
+      - '.github/workflows/deploy-website.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'website/package-lock.json'
+
+      - name: Install dependencies
+        run: |
+          cd website
+          npm install
+
+      - name: Build Astro site
+        run: |
+          cd website
+          npm run build
+
+      - name: Deploy to S3
+        uses: aws-actions/aws-s3-sync@v4
+        with:
+          bucket: ${{ secrets.AWS_S3_BUCKET }}
+          local-dir: website/dist
+          delete: true
+          s3-prefix: ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Invalidate CloudFront
+        if: vars.CF_DISTRIBUTION_ID != ''
+        uses: aws-actions/cloudfront-actions/invalidate-cache@v1
+        with:
+          distribution_id: ${{ vars.CF_DISTRIBUTION_ID }}
+          paths: '/*'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}

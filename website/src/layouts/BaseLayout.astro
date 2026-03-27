@@ -1,0 +1,178 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Build private apps and widgets with AI, no code required.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | Rep-li-bot</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container">
+        <a href="/" class="logo">Rep-li-bot</a>
+        <div class="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/docs">Docs</a>
+          <a href="/download" class="btn btn-primary">Download</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo">Rep-li-bot</span>
+            <p>Local-first app builder for private apps and widgets.</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Product</h4>
+              <a href="/#features">Features</a>
+              <a href="/download">Download</a>
+              <a href="/docs">Documentation</a>
+            </div>
+            <div class="footer-section">
+              <h4>Resources</h4>
+              <a href="/docs/getting-started">Getting Started</a>
+              <a href="/docs/ai-configuration">AI Setup</a>
+            </div>
+            <div class="footer-section">
+              <h4>Community</h4>
+              <a href="https://github.com/andyjm2k/Rep-li-bot" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://github.com/andyjm2k/Rep-li-bot/releases" target="_blank" rel="noopener">Releases</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>MIT License 2026 andyjm2k</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: var(--space-4) 0;
+  }
+
+  .site-header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .nav-links a {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .nav-links a:not(.btn):hover {
+    color: var(--accent);
+  }
+
+  .site-footer {
+    background: var(--text);
+    color: var(--bg);
+    padding: var(--space-16) 0 var(--space-8);
+    margin-top: var(--space-24);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+  }
+
+  .footer-brand .logo {
+    color: var(--accent);
+  }
+
+  .footer-brand p {
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .footer-section h4 {
+    color: white;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+  }
+
+  .footer-section a {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-section a:hover {
+    color: var(--accent);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: var(--space-8);
+  }
+
+  .footer-bottom p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links a:not(.btn) {
+      display: none;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

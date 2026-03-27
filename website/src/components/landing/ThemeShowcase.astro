@@ -1,0 +1,161 @@
+---
+const themes = [
+  {
+    name: 'Meadow',
+    accent: '#7ac8ab',
+    bg: '#f5f3eb',
+    text: '#203039',
+    description: 'Fresh and natural',
+  },
+  {
+    name: 'Terminal',
+    accent: '#4ade80',
+    bg: '#0d1117',
+    text: '#e6edf3',
+    description: 'Classic terminal green',
+  },
+  {
+    name: 'Paper',
+    accent: '#6366f1',
+    bg: '#fefefe',
+    text: '#1f2937',
+    description: 'Clean and minimal',
+  },
+  {
+    name: 'Sunset',
+    accent: '#f97316',
+    bg: '#fff7ed',
+    text: '#431407',
+    description: 'Warm and inviting',
+  },
+];
+---
+
+<section class="theme-showcase">
+  <div class="container">
+    <div class="section-header">
+      <h2>Built-in Themes</h2>
+      <p>Choose from four carefully crafted themes or customize your own.</p>
+    </div>
+    <div class="themes-grid">
+      {themes.map((theme) => (
+        <div class="theme-card">
+          <div
+            class="theme-preview"
+            style={`background-color: ${theme.bg}; border-color: ${theme.accent}20;`}
+          >
+            <div class="theme-ui">
+              <div class="theme-header" style={`background-color: ${theme.accent};`}></div>
+              <div class="theme-content">
+                <div class="theme-line" style={`background-color: ${theme.accent}40; width: 60%;`}></div>
+                <div class="theme-line" style={`background-color: ${theme.text}20; width: 80%;`}></div>
+                <div class="theme-line" style={`background-color: ${theme.text}15; width: 40%;`}></div>
+              </div>
+            </div>
+          </div>
+          <div class="theme-info">
+            <h4 style={`color: ${theme.accent};`}>{theme.name}</h4>
+            <p>{theme.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .theme-showcase {
+    background: var(--bg-secondary);
+    padding: var(--space-24) 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+  }
+
+  .themes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+  }
+
+  .theme-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .theme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .theme-preview {
+    aspect-ratio: 4/3;
+    padding: var(--space-4);
+    border-bottom: 1px solid;
+  }
+
+  .theme-ui {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .theme-header {
+    height: 8px;
+  }
+
+  .theme-content {
+    flex: 1;
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .theme-line {
+    height: 6px;
+    border-radius: 3px;
+  }
+
+  .theme-info {
+    padding: var(--space-4);
+    text-align: center;
+  }
+
+  .theme-info h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-1);
+  }
+
+  .theme-info p {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 992px) {
+    .themes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .themes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

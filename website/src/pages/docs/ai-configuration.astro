@@ -1,0 +1,63 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="AI Configuration">
+  <h2>AI Configuration</h2>
+  <p>
+    Rep-li-bot uses OpenAI-compatible APIs for AI-powered code generation.
+    Configure your AI provider to enable this feature.
+  </p>
+
+  <h3>Settings Panel</h3>
+  <p>
+    Access AI settings from the Settings menu in the top bar, then select "AI Settings".
+  </p>
+
+  <h3>Configuration Options</h3>
+  <ul>
+    <li><strong>Provider Label</strong> - A friendly name for your provider (e.g., "ChatGPT", "Codex")</li>
+    <li><strong>Base URL</strong> - The API endpoint URL</li>
+    <li><strong>Model</strong> - The model identifier (e.g., <code>gpt-4</code>, <code>gpt-3.5-turbo</code>)</li>
+    <li><strong>API Key</strong> - Your API key for authentication</li>
+  </ul>
+
+  <h3>Common Configurations</h3>
+
+  <h4>OpenAI (ChatGPT)</h4>
+  <pre><code>Base URL: https://api.openai.com/v1
+Model: gpt-4</code></pre>
+
+  <h4>Azure OpenAI</h4>
+  <pre><code>Base URL: https://YOUR_RESOURCE.openai.azure.com/v1
+Model: your-deployment-name</code></pre>
+
+  <h4>Self-Hosted / Local</h4>
+  <pre><code>Base URL: http://localhost:11434/v1 (Ollama)
+Model: codellama</code></pre>
+
+  <h3>Security</h3>
+  <p>
+    Your API key is stored locally in your workspace and is never exposed
+    to the iframe preview harness or transmitted anywhere except to your
+    configured AI provider.
+  </p>
+
+  <h3>Environment Variables</h3>
+  <p>
+    For automated builds, you can inject provider defaults using environment variables:
+  </p>
+  <ul>
+    <li><code>REPLIBOT_AI_PROVIDER_LABEL</code></li>
+    <li><code>REPLIBOT_AI_BASE_URL</code></li>
+    <li><code>REPLIBOT_AI_MODEL</code></li>
+    <li><code>REPLIBOT_AI_API_KEY</code></li>
+  </ul>
+
+  <h3>Troubleshooting</h3>
+  <ul>
+    <li><strong>Invalid API key</strong> - Verify your key is correct and active</li>
+    <li><strong>Rate limiting</strong> - Check your API plan limits</li>
+    <li><strong>Connection errors</strong> - Verify your internet connection and firewall settings</li>
+  </ul>
+</DocsLayout>

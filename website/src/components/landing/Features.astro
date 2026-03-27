@@ -1,0 +1,163 @@
+---
+const features = [
+  {
+    title: 'No-Code Builder',
+    description: 'Describe what you want in plain English. Rep-li-bot generates the code using AI.',
+    icon: 'sparkle',
+  },
+  {
+    title: 'Local & Private',
+    description: 'All apps run locally on your machine. Your data never leaves your device.',
+    icon: 'shield',
+  },
+  {
+    title: 'AI-Powered',
+    description: 'Uses OpenAI-compatible APIs including ChatGPT and Codex for intelligent code generation.',
+    icon: 'cpu',
+  },
+  {
+    title: 'Widget Support',
+    description: 'Create lightweight widgets and mini-apps for personal productivity.',
+    icon: 'layout',
+  },
+  {
+    title: 'Secure Runtime',
+    description: 'Sandboxed preview harness with proper permission boundaries.',
+    icon: 'lock',
+  },
+  {
+    title: 'Windows Installer',
+    description: 'One-click NSIS installer with built-in AI provider configuration.',
+    icon: 'download',
+  },
+];
+---
+
+<section id="features" class="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Everything You Need to Build Apps</h2>
+      <p>Rep-li-bot combines the power of AI with a simple, secure local-first approach.</p>
+    </div>
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class="feature-card card">
+          <div class="feature-icon">
+            {feature.icon === 'sparkle' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/>
+              </svg>
+            )}
+            {feature.icon === 'shield' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            )}
+            {feature.icon === 'cpu' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+                <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+                <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+                <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+              </svg>
+            )}
+            {feature.icon === 'layout' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
+              </svg>
+            )}
+            {feature.icon === 'lock' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+            )}
+            {feature.icon === 'download' && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7,10 12,15 17,10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            )}
+          </div>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    background: var(--bg-secondary);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .feature-card {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    color: white;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-card p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 992px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

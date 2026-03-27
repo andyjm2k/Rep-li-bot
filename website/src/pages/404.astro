@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Page Not Found">
+  <section class="error-page">
+    <div class="container">
+      <h1>404</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <a href="/" class="btn btn-primary">Go Home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    text-align: center;
+    padding: var(--space-24) 0;
+  }
+
+  h1 {
+    font-size: 6rem;
+    color: var(--accent);
+    margin-bottom: var(--space-4);
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-8);
+  }
+</style>

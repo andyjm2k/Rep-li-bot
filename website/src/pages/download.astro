@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const releaseUrl = 'https://github.com/andyjm2k/Rep-li-bot/releases/latest';
+---
+
+<BaseLayout title="Download" description="Download the Rep-li-bot installer for Windows.">
+  <section class="download-page">
+    <div class="container">
+      <div class="download-hero">
+        <h1>Download Rep-li-bot</h1>
+        <p>Get the latest version for Windows and start building apps with AI.</p>
+      </div>
+
+      <div class="download-card card">
+        <div class="download-info">
+          <div class="os-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+            </svg>
+            Windows
+          </div>
+          <h2>Rep-li-bot v0.1.0</h2>
+          <p class="file-size">~86 MB</p>
+          <a href={releaseUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7,10 12,15 17,10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download Installer
+          </a>
+        </div>
+
+        <div class="system-requirements">
+          <h3>System Requirements</h3>
+          <ul>
+            <li><strong>OS:</strong> Windows 10 or later (64-bit)</li>
+            <li><strong>RAM:</strong> 4 GB minimum</li>
+            <li><strong>Disk:</strong> 200 MB free space</li>
+            <li><strong>Other:</strong> Internet connection for AI features</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="download-notes">
+        <div class="note-card card">
+          <h3>Installation</h3>
+          <p>Run the installer and follow the setup wizard. The installer includes built-in AI provider configuration.</p>
+        </div>
+        <div class="note-card card">
+          <h3>Verification</h3>
+          <p>SHA256 checksums are available on the GitHub Releases page for verifying file integrity.</p>
+        </div>
+        <div class="note-card card">
+          <h3>Updates</h3>
+          <p>New releases are published on GitHub. Check the releases page for the latest version.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .download-page {
+    padding: var(--space-16) 0 var(--space-24);
+  }
+
+  .download-hero {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .download-hero h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .download-hero p {
+    font-size: 1.125rem;
+  }
+
+  .download-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    padding: var(--space-8);
+    max-width: 800px;
+    margin: 0 auto var(--space-8);
+  }
+
+  .download-info {
+    text-align: center;
+    padding: var(--space-8);
+    border-right: 1px solid var(--border);
+  }
+
+  .os-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--text);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+
+  .download-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .file-size {
+    color: var(--text-muted);
+    margin-bottom: var(--space-6);
+  }
+
+  .btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: 1.125rem;
+  }
+
+  .system-requirements {
+    padding: var(--space-4);
+  }
+
+  .system-requirements h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .system-requirements ul {
+    list-style: none;
+  }
+
+  .system-requirements li {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .system-requirements strong {
+    color: var(--text);
+  }
+
+  .download-notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .note-card {
+    text-align: center;
+  }
+
+  .note-card h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .note-card p {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .download-card {
+      grid-template-columns: 1fr;
+    }
+
+    .download-info {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-8);
+    }
+
+    .download-notes {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

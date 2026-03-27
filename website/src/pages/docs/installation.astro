@@ -1,0 +1,63 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Installation">
+  <h2>Installation</h2>
+  <p>
+    Rep-li-bot requires Windows 10 or later (64-bit). Follow these steps to install.
+  </p>
+
+  <h3>Download</h3>
+  <p>
+    Download the latest installer from the <a href="/download">download page</a>
+    or from <a href="https://github.com/andyjm2k/Rep-li-bot/releases" target="_blank" rel="noopener">GitHub Releases</a>.
+  </p>
+
+  <h3>Run the Installer</h3>
+  <ol>
+    <li>Double-click <code>Replibot Setup X.X.X.exe</code></li>
+    <li>If prompted by User Account Control, click "Yes"</li>
+    <li>Follow the setup wizard instructions</li>
+    <li>Choose your installation location (default is recommended)</li>
+  </ol>
+
+  <h3>AI Provider Setup</h3>
+  <p>
+    During installation, you'll be prompted to configure your AI provider.
+    You can skip this and configure it later from within the app.
+  </p>
+  <ul>
+    <li><strong>Provider Label</strong> - A friendly name (e.g., "ChatGPT")</li>
+    <li><strong>Base URL</strong> - The API endpoint (e.g., <code>https://api.openai.com/v1</code>)</li>
+    <li><strong>Model</strong> - The model name (e.g., <code>gpt-4</code>)</li>
+    <li><strong>API Key</strong> - Your API key for authentication</li>
+  </ul>
+
+  <h3>First Launch</h3>
+  <p>After installation, launch Rep-li-bot from:</p>
+  <ul>
+    <li>Start Menu → "Rep-li-bot"</li>
+    <li>Desktop shortcut (if created)</li>
+  </ul>
+
+  <h3>Troubleshooting</h3>
+
+  <h4>Installation fails</h4>
+  <p>
+    Make sure you have administrator privileges and that Windows Defender
+    or other security software isn't blocking the installer.
+  </p>
+
+  <h4>App won't launch</h4>
+  <p>
+    Verify your Windows version is 10 or later and that you have a display adapter
+    with WebGL support.
+  </p>
+
+  <h4>AI features don't work</h4>
+  <p>
+    Check your AI configuration in Settings → AI Settings panel.
+    Ensure your API key is valid and you have an active subscription.
+  </p>
+</DocsLayout>

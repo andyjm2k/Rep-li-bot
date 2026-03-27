@@ -1,0 +1,106 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="landing-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo">Rep-li-bot</span>
+        <p>Local-first app builder for private apps and widgets.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Product</h4>
+          <a href="/#features">Features</a>
+          <a href="/download">Download</a>
+          <a href="/docs">Documentation</a>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <a href="/docs/getting-started">Getting Started</a>
+          <a href="/docs/ai-configuration">AI Setup</a>
+        </div>
+        <div class="footer-section">
+          <h4>Community</h4>
+          <a href="https://github.com/andyjm2k/Rep-li-bot" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/andyjm2k/Rep-li-bot/releases" target="_blank" rel="noopener">Releases</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>MIT License {currentYear} andyjm2k</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .launcher-footer {
+    background: var(--text);
+    color: var(--bg);
+    padding: var(--space-16) 0 var(--space-8);
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+  }
+
+  .footer-brand .logo {
+    color: var(--accent);
+  }
+
+  .footer-brand p {
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    font-size: 0.875rem;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .footer-section h4 {
+    color: white;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+  }
+
+  .footer-section a {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-section a:hover {
+    color: var(--accent);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: var(--space-8);
+  }
+
+  .footer-bottom p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
