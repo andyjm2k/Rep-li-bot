@@ -1,5 +1,7 @@
 # Rep-li-bot
 
+<img src="replibot.JPG" alt="Rep-li-bot Logo" width="200"/>
+
 A local-first desktop application for building private apps and widgets without coding. Rep-li-bot uses AI to generate custom applications based on your descriptions, keeping everything local and private.
 
 ## Features
@@ -83,6 +85,7 @@ Output artifacts:
 
 ```
 replibot/
+├── replibot.JPG        # Product logo
 ├── electron/           # Electron main process
 │   ├── main.ts        # Main entry point
 │   ├── preload.ts     # Secure IPC bridge
@@ -98,6 +101,9 @@ replibot/
 │   ├── types.ts     # TypeScript definitions
 │   ├── themes.ts     # Theme definitions
 │   └── builder.ts    # Builder utilities
+├── website/          # Marketing website (Astro)
+│   ├── public/       # Static assets including logo and favicons
+│   └── src/          # Pages, layouts, components
 ├── config/           # Configuration files
 ├── docs/             # Documentation
 ├── scripts/          # Build and packaging scripts
