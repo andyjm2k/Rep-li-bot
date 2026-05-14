@@ -30,7 +30,7 @@ const { title, description = 'Build private apps and widgets with AI, no code re
         <div class="nav-links">
           <a href="/#features">Features</a>
           <a href="/docs">Docs</a>
-          <a href="/download" class="btn btn-primary">Download</a>
+          <a href="/download" class="btn btn-nav-download">Download</a>
         </div>
       </nav>
     </header>
@@ -77,8 +77,9 @@ const { title, description = 'Build private apps and widgets with AI, no code re
   .site-header {
     position: sticky;
     top: 0;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
     z-index: 100;
     padding: var(--space-4) 0;
   }
@@ -95,25 +96,42 @@ const { title, description = 'Build private apps and widgets with AI, no code re
   }
 
   .logo-img {
-    height: 32px;
+    height: 72px;
     width: auto;
-    max-width: 120px;
+    max-width: 200px;
     object-fit: contain;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
+    gap: var(--space-8);
   }
 
   .nav-links a {
-    color: var(--text);
+    color: var(--text-muted);
     font-weight: 500;
+    font-size: 0.9375rem;
+    transition: color var(--transition-fast);
   }
 
   .nav-links a:not(.btn):hover {
-    color: var(--accent);
+    color: var(--primary);
+  }
+
+  .btn-nav-download {
+    background: var(--text);
+    color: white !important;
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .btn-nav-download:hover {
+    background: #2d3748;
+    transform: translateY(-1px);
   }
 
   .site-footer {
@@ -123,64 +141,68 @@ const { title, description = 'Build private apps and widgets with AI, no code re
     margin-top: var(--space-24);
   }
 
-  .footer-content {
+  .site-footer .footer-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: var(--space-12);
     margin-bottom: var(--space-12);
   }
 
-  .footer-brand .logo {
-    color: var(--accent);
+  .site-footer .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
   }
 
-  .footer-logo {
+  .site-footer .footer-logo {
     height: 32px;
     width: auto;
     max-width: 120px;
-    margin-bottom: var(--space-2);
     object-fit: contain;
+    opacity: 0.9;
   }
 
-  .footer-brand p {
-    color: var(--text-muted);
-    margin-top: var(--space-2);
+  .site-footer .footer-brand p {
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
+    line-height: 1.6;
   }
 
-  .footer-links {
+  .site-footer .footer-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-8);
   }
 
-  .footer-section h4 {
-    color: white;
-    font-size: 0.875rem;
+  .site-footer .footer-section h4 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     margin-bottom: var(--space-4);
   }
 
-  .footer-section a {
+  .site-footer .footer-section a {
     display: block;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+    transition: color var(--transition-fast);
   }
 
-  .footer-section a:hover {
-    color: var(--accent);
+  .site-footer .footer-section a:hover {
+    color: var(--primary-glow);
   }
 
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+  .site-footer .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: var(--space-8);
   }
 
-  .footer-bottom p {
-    color: var(--text-muted);
-    font-size: 0.875rem;
+  .site-footer .footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8125rem;
   }
 
   @media (max-width: 768px) {
@@ -189,7 +211,8 @@ const { title, description = 'Build private apps and widgets with AI, no code re
     }
 
     .footer-content {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
+      gap: var(--space-8) !important;
     }
 
     .footer-links {

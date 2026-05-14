@@ -41,7 +41,7 @@ const features = [
     </div>
     <div class="features-grid">
       {features.map((feature) => (
-        <div class="feature-card card">
+        <div class="feature-card">
           <div class="feature-icon">
             {feature.icon === 'sparkle' && (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -95,6 +95,17 @@ const features = [
 <style>
   .features {
     background: var(--bg-secondary);
+    position: relative;
+  }
+
+  .features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
   }
 
   .section-header {
@@ -119,34 +130,41 @@ const features = [
   }
 
   .feature-card {
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
   }
 
   .feature-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--shadow);
+    box-shadow: 0 12px 40px var(--shadow-lg);
+    border-color: var(--border);
   }
 
   .feature-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--accent);
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--primary) 0%, rgba(74, 222, 154, 0.15) 100%);
     color: white;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
   }
 
   .feature-card h3 {
     font-size: 1.125rem;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+    color: var(--text);
   }
 
   .feature-card p {
     font-size: 0.9375rem;
     line-height: 1.6;
+    color: var(--text-muted);
   }
 
   @media (max-width: 992px) {

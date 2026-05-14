@@ -1,17 +1,17 @@
 ---
 const steps = [
   {
-    number: '1',
+    number: '01',
     title: 'Describe Your App',
     description: 'Tell Rep-li-bot what you want in plain English. A productivity tracker, a recipe manager, a widget for your smart home.',
   },
   {
-    number: '2',
+    number: '02',
     title: 'AI Generates the Code',
     description: 'Rep-li-bot uses AI to understand your requirements and generates working code tailored to your needs.',
   },
   {
-    number: '3',
+    number: '03',
     title: 'Run Locally',
     description: 'Preview and run your app instantly. Everything stays on your machine, private and secure.',
   },
@@ -30,7 +30,13 @@ const steps = [
           <div class="step-number">{step.number}</div>
           <h3>{step.title}</h3>
           <p>{step.description}</p>
-          {index < steps.length - 1 && <div class="step-arrow">&#8594;</div>}
+          {index < steps.length - 1 && (
+            <div class="step-connector">
+              <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                <path d="M0 12h32M24 12l8-6v12l-8-6z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -40,6 +46,7 @@ const steps = [
 <style>
   .how-it-works {
     padding: var(--space-24) 0;
+    position: relative;
   }
 
   .section-header {
@@ -60,8 +67,8 @@ const steps = [
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: var(--space-8);
-    max-width: 1000px;
+    gap: var(--space-6);
+    max-width: 1100px;
     margin: 0 auto;
   }
 
@@ -69,13 +76,14 @@ const steps = [
     flex: 1;
     text-align: center;
     position: relative;
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-6);
+    max-width: 300px;
   }
 
   .step-number {
-    width: 56px;
-    height: 56px;
-    background: var(--accent);
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
@@ -83,34 +91,43 @@ const steps = [
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto var(--space-4);
+    margin: 0 auto var(--space-6);
+    box-shadow: 0 4px 16px rgba(61, 139, 110, 0.3);
+    letter-spacing: 0.05em;
   }
 
   .step h3 {
-    font-size: 1.125rem;
-    margin-bottom: var(--space-2);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-3);
+    color: var(--text);
   }
 
   .step p {
     font-size: 0.9375rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--text-muted);
   }
 
-  .step-arrow {
+  .step-connector {
     position: absolute;
-    top: 28px;
-    right: -40px;
-    font-size: 1.5rem;
-    color: var(--accent);
+    top: 36px;
+    right: -20px;
+    color: var(--primary);
+    opacity: 0.3;
   }
 
   @media (max-width: 768px) {
     .steps {
       flex-direction: column;
       gap: var(--space-12);
+      align-items: center;
     }
 
-    .step-arrow {
+    .step {
+      max-width: 320px;
+    }
+
+    .step-connector {
       display: none;
     }
   }

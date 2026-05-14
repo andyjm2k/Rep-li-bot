@@ -6,7 +6,14 @@
     <div class="cta-box">
       <h2>Get Started Today</h2>
       <p>Download Rep-li-bot and start building your private apps in minutes.</p>
-      <a href="/download" class="btn btn-primary btn-lg">Download for Windows</a>
+      <a href="/download" class="btn btn-accent btn-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7,10 12,15 17,10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download for Windows
+      </a>
       <div class="cta-meta">
         <span>Version 0.1.0</span>
         <span class="separator">|</span>
@@ -24,11 +31,13 @@
   }
 
   .cta-box {
+    position: relative;
     text-align: center;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     padding: var(--space-16);
     border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
   .cta-box h2 {
@@ -37,29 +46,32 @@
   }
 
   .cta-box p {
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1.125rem;
     margin-bottom: var(--space-8);
   }
 
-  .cta-box .btn-primary {
-    background: white;
-    color: var(--accent-strong);
+  .btn-accent {
+    background: var(--text) !important;
+    color: white !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
-  .cta-box .btn-primary:hover {
-    background: var(--bg);
-    color: var(--accent-strong);
+  .btn-accent:hover {
+    background: #2d3748 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   }
 
   .cta-meta {
     margin-top: var(--space-6);
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.875rem;
   }
 
   .separator {
-    margin: 0 var(--space-2);
+    margin: 0 var(--space-3);
     opacity: 0.5;
   }
 </style>

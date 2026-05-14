@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <span class="logo">Rep-li-bot</span>
+        <img src="/images/logo.png" alt="Rep-li-bot" class="footer-logo" />
         <p>Local-first app builder for private apps and widgets.</p>
       </div>
       <div class="footer-links">
@@ -35,11 +35,11 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style>
-  .launcher-footer {
+  .landing-footer {
     background: var(--text);
     color: var(--bg);
     padding: var(--space-16) 0 var(--space-8);
-    margin-top: auto;
+    margin-top: var(--space-24);
   }
 
   .footer-content {
@@ -49,14 +49,24 @@ const currentYear = new Date().getFullYear();
     margin-bottom: var(--space-12);
   }
 
-  .footer-brand .logo {
-    color: var(--accent);
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer-logo {
+    height: 48px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    opacity: 0.9;
   }
 
   .footer-brand p {
-    color: var(--text-muted);
-    margin-top: var(--space-2);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
+    line-height: 1.6;
   }
 
   .footer-links {
@@ -66,37 +76,40 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-section h4 {
-    color: white;
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     margin-bottom: var(--space-4);
   }
 
   .footer-section a {
     display: block;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+    transition: color var(--transition-fast);
   }
 
   .footer-section a:hover {
-    color: var(--accent);
+    color: var(--primary-glow);
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: var(--space-8);
   }
 
   .footer-bottom p {
-    color: var(--text-muted);
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8125rem;
   }
 
   @media (max-width: 768px) {
     .footer-content {
       grid-template-columns: 1fr;
+      gap: var(--space-8);
     }
 
     .footer-links {
